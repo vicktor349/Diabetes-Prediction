@@ -4,6 +4,7 @@ import streamlit as st
 
 loaded_model = pickle.load(open('C:/Users/ayomi/Documents/programming/diabetes_prediction/trained_model.sav', 'rb'))
 
+
 # creating function for prediction
 
 def diabetes_prediction(input_data):
@@ -17,6 +18,7 @@ def diabetes_prediction(input_data):
 
     prediction = loaded_model.predict(input_data_reshaped)
     print(prediction)
+    print(pickle.format_version)
 
     if (prediction[0] == 0):
         return "This patient is not diabetic"
