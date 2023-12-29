@@ -4,6 +4,14 @@ import streamlit as st
 
 loaded_model = pickle.load(open('C:/Users/ayomi/Documents/programming/diabetes_prediction/trained_model.sav', 'rb'))
 
+uploaded_file = st.file_uploader(
+    loaded_model, accept_multiple_files=False
+)
+if loaded_model is not None:
+    file_name = uploaded_file
+else:
+    file_name = "trained_model.sav"
+
 # creating function for prediction
 
 def diabetes_prediction(input_data):
