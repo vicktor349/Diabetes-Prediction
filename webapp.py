@@ -7,24 +7,38 @@ loaded_model = pickle.load(open('C:/Users/ayomi/Documents/programming/diabetes_p
 
 # creating function for prediction
 
+# def diabetes_prediction(input_data):
+#     #converting input daya to numeric types
+#     input_data = [float(val) for val in input_data]
+
+#     # changing the input data to numpy array
+#     input_data_as_numpy_array = np.asarray(input_data)
+
+#     #reshaping the array as we are predicting for one instance
+#     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
+
+#     prediction = loaded_model.predict(input_data_reshaped)
+#     print(prediction)
+
+#     if (prediction[0] == 0):
+#         return "This patient is not diabetic"
+#     else:
+#         return "This patient is diabetic"
+    
 def diabetes_prediction(input_data):
-    # input_data = (4,132,0,0,0,32.9,0.302,23)
+    # Convert input data to numeric types
+    input_data = [float(val) for val in input_data]
 
-    # changing the input data to numpy array
-    input_data_as_numpy_array = np.asarray(input_data)
-
-    #reshaping the array as we are predicting for one instance
-    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
+    # Reshape the data for prediction
+    input_data_reshaped = np.array(input_data).reshape(1, -1)
 
     prediction = loaded_model.predict(input_data_reshaped)
-    print(prediction)
-    print(pickle.format_version)
 
-    if (prediction[0] == 0):
+    if prediction[0] == 0:
         return "This patient is not diabetic"
     else:
         return "This patient is diabetic"
-    
+
 
 def main():
     """Main script for running the web app"""
